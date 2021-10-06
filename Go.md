@@ -84,6 +84,51 @@ charset = utf-8
 indent_style = tab
 ```
 
+# JSON response format
+
+```json
+// Error case
+{
+  "code": 100010,
+  "message": "Error message for end user",
+  "info": "Error message for developer"
+}
+
+// Success case with one value
+{
+  "code": 200,
+  "message": "OK",
+  "result": {
+    // Attribues
+  }
+}
+
+// Success case with multiple values
+{
+  "code": 200,
+  "message": "OK",
+  "result": {
+    "data": [
+      // Object items
+    ]
+  }
+}
+
+// Success case with multiple values and paging
+{
+  "code": 200,
+  "message": "OK",
+  "result": {
+    "data": [
+      // Object items
+    ],
+    "page": 1, // int
+    "limit": 20, // int
+    "total": 0, // int
+  }
+}
+```
+
 # Naming
 - Use **UpperCamelCase** for public and **lowerCamelCase** for private interfaces, structs, variables and functions.
 
@@ -302,9 +347,10 @@ var (
 )
 ```
 
-# Slices / Maps
+# Slices / Maps / String
 - Prefer `s := make([]string, 0)` over `var s []string` when declaring an empty slice
 - Prefer `s := make(map[int64]string)` over `var s map[int64]string` when declaring an empty map
+- Prefer `str := fmt.Sprintf("%s: %d", var1, var2)` over `str := var1 + ": " + strconv.Itoa(var2)`
 
 # Functions
 - Should declare the type for each parameter over declare single type for all parameters.
