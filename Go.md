@@ -454,7 +454,7 @@ func ErrUnauthorized(err error) AppError {
     return AppError{
         Raw:       err,
 	HTTPCode:  http.StatusUnauthorized,
-	ErrorCode: "100010", // 1: Auth service; 00: Non-model; 0010: Error number,
+	ErrorCode: "100010", // 1: Auth service; 00: Non-model; 010: Error number,
         Info: "record not found",
 	Message: "Unauthorized!",
     }
@@ -465,7 +465,7 @@ func ErrUserGetList(err error) apperror.AppError {
     return apperror.AppError{
         Raw:       err,
 	HTTPCode:  http.StatusInternalServerError,
-	ErrorCode: "201010", // 2: User service; 01: User model; 0010: Error number
+	ErrorCode: "201010", // 2: User service; 01: User model; 010: Error number
         Info: "fail to get users",
         Message: "fail to get users",
     }
