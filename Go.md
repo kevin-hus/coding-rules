@@ -444,7 +444,8 @@ func TestXxx(*testing.T) {
 
 # Error Codes
 - The error code has format `{1 digit of service}{2 digits of model}{4 digits of error number}`
-- The error code should start with `1` for common errors and `auth-service` errors
+- The error code should start with `1` for common errors and `auth-service` errors 
+
   Example:
 
 ```go
