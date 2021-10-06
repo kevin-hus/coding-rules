@@ -403,7 +403,7 @@ func (sh ServerHandler) ServeHTTP(rw ResponseWriter, r *Request) {
 ```
 
 # Errors
-- **DO NOT** ignore errors using `_` variables if the function returns an error. Check them to make sure the function is completed.
+- **SHOULD NOT** ignore errors using `_` variables if the function returns an error. Check them to make sure the function is completed.
 - Should reuse the variable err instead of assigning errors to a new variable for error handling since errors must be handled right away.
 
 ```go
@@ -443,7 +443,7 @@ func TestXxx(*testing.T) {
 ```
 
 # Error Codes
-- The error code has format `{1 digit of service}{2 digits of model}{4 digits of error number}`
+- The error code has format `{1 digit of service}{2 digits of model}{3 digits of error number}`
 - The error code should start with `1` for common errors and `auth-service` errors 
 
   Example:
@@ -454,7 +454,7 @@ func ErrUnauthorized(err error) AppError {
     return AppError{
         Raw:       err,
 	HTTPCode:  http.StatusUnauthorized,
-	ErrorCode: "1000010", // 1: Auth service; 00: Non-model; 0010: Error number,
+	ErrorCode: "100010", // 1: Auth service; 00: Non-model; 0010: Error number,
         Info: "record not found",
 	Message: "Unauthorized!",
     }
@@ -465,7 +465,7 @@ func ErrUserGetList(err error) apperror.AppError {
     return apperror.AppError{
         Raw:       err,
 	HTTPCode:  http.StatusInternalServerError,
-	ErrorCode: "2010010", // 2: User service; 01: User model; 0010: Error number
+	ErrorCode: "201010", // 2: User service; 01: User model; 0010: Error number
         Info: "fail to get users",
         Message: "fail to get users",
     }
