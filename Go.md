@@ -303,8 +303,8 @@ var (
 ```
 
 # Slices / Maps
-- Prefer var s []string over s := make([]string, 0) when declaring an empty slice
-- Prefer var s map[int64]string over s := make(map[int64]string) when declaring an empty map
+- Prefer `s := make([]string, 0)` over `var s []string` when declaring an empty slice
+- Prefer `s := make(map[int64]string)` over `var s map[int64]string` when declaring an empty map
 
 # Functions
 - Should declare the type for each parameter over declare single type for all parameters.
